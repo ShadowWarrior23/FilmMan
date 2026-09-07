@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route, NavLink } from 'React-router';
 import './App.css'
 import FilmList from './comps/FilmList';
