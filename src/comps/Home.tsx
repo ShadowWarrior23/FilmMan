@@ -5,7 +5,7 @@ function Home() {
 
   return (
     <>
-      <h1>Welcome to out humble film catalogue!</h1>
+      <h1>Welcome to our humble film catalogue!</h1>
     </>
   )
 }
