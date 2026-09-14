@@ -1,6 +1,9 @@
+import { useFavs } from '../contexts/FavsContext';
 import type {FilmIf2} from '../ifs/Film'
 
 const Film: React.FC<FilmIf2> = ({id, title, genre, year, description, rating, addFav}) => {
+
+const {favList} = useFavs();
 
   return (
       <article>
@@ -9,7 +12,7 @@ const Film: React.FC<FilmIf2> = ({id, title, genre, year, description, rating, a
         <p>Year: {year}</p>
         <p>Desc.: {description}</p>
         <p>Rating: {rating}</p>
-        <button id={id.toString()} onClick={() => addFav(id)}>Fav</button>
+        <button id={id.toString()} disabled={favList.includes(title)} onClick={() => addFav(id)}>Fav</button>
       </article>
   )
 }

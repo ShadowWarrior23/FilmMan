@@ -1,12 +1,14 @@
-import { useState } from 'react';
 import { useFavs } from '../contexts/FavsContext';
 
 function Favs() {
-  const {favList, remFav} = useFavs();
+  const {favList, remFav, remAllFavs} = useFavs();
 
   return (
     <>
       <h1>Favs</h1>
+      {favList.length && (
+        <button onClick={remAllFavs}>Delete all favorites</button>
+      )}
       <ul>
         {favList.length && favList.map(fm => (
           <li key={fm}>

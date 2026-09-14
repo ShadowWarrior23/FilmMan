@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, type ReactNode, Children } from "react";
+import { useContext, createContext, useState, type ReactNode } from "react";
 
 interface FavsPropType {
     children: ReactNode;
@@ -8,6 +8,7 @@ type FavsContextType = {
     favList: string[];
     addFav: (title: string) => void;
     remFav: (title: string) => void;
+    remAllFavs: () => void;
 }
 
 const FavsContext = createContext<FavsContextType | null>(null);
@@ -22,8 +23,12 @@ export const FavsProvider: React.FC<FavsPropType> = ({ children }) => {
         setFavList(prev => prev.filter(t => t !== title));
     }
 
+    function remAllFavs(){
+        if (confirm('Would you like to delete all favorites?')) setFavList([]);
+    }
+
     return (
-        <FavsContext.Provider value={{ favList, addFav, remFav }}>
+        <FavsContext.Provider value={{ favList, addFav, remFav, remAllFavs }}>
             {children}
         </FavsContext.Provider>
     );
